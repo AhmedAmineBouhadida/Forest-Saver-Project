@@ -1,0 +1,32 @@
+<!-- templates/account/login.html -->
+{% load i18n %}
+{% load static %}
+{% load socialaccount %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Login{% endblock %}</title>
+    <!-- Ajoutez vos fichiers CSS ici -->
+    <link rel="stylesheet" href="{% static 'account/css/style.css' %}">
+</head>
+<body>
+    <h1>AAAA</h1>
+    <div class="login-container">
+        <h2>{% trans "Login" %}</h2>
+        <form method="post" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">{% trans "Login" %}</button>
+        </form>
+        <p>
+            <a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+        </p>
+        <p>
+            <a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+        </p>
+    </div>
+</body>
+</html>

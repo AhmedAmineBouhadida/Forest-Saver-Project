@@ -1,0 +1,27 @@
+<!-- templates/account/signup.html -->
+{% load i18n %}
+{% load static %}
+{% load socialaccount %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Sign Up{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>{% trans "Sign Up" %}</h2>
+        <form method="post" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">{% trans "Sign Up" %}</button>
+        </form>
+        <p>
+            <a href="{% url 'account_login' %}">{% trans "Already have an account? Login" %}</a>
+        </p>
+    </div>
+</body>
+</html>

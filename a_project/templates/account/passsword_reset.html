@@ -1,0 +1,27 @@
+{% load i18n %}
+
+{% load static %}
+{% load socialaccount %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Password Reset{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>{% trans "Password Reset" %}</h2>
+        <form method="post" action="{% url 'account_reset_password' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">{% trans "Reset Password" %}</button>
+        </form>
+        <p>
+            <a href="{% url 'account_login' %}">{% trans "Back to Login" %}</a>
+        </p>
+    </div>
+</body>
+</html>
